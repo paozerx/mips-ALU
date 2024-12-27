@@ -5,8 +5,7 @@ entity mip_alu_sign is
 port( a, b,a_inv,b_inv,less : in std_logic;
 		c_in	  : in std_logic;
 		operator: in std_logic_vector(3 downto 0);
-		c_out : out std_logic;
-		overflow, set : out std_logic;
+		overflow : out std_logic;
       result: out std_logic);
 end mip_alu_sign;
 
@@ -14,6 +13,7 @@ architecture Behavioral of mip_alu_sign is
 signal sum1 : std_logic;
 signal a_x : std_logic;
 signal b_x : std_logic;
+signal c_out : std_logic;
 signal sum_or : std_logic;
 signal sum_and : std_logic;
 signal sum_nor : std_logic;
@@ -32,14 +32,7 @@ begin
 										enable => b_inv,
 										output => b_x);
 										
-	process (a)
-		begin
-			if a = '0' and b = '1' then
-				set <= '1';
-			else
-				set <= '0';
-			end if;
-		end process;
+
 	
 	sum_or <= a_x or b_x;
 	sum_and <= a_x and b_x;
