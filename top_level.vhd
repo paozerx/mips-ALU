@@ -5,7 +5,7 @@ generic ( N : integer := 32 );
 port( a, b : in std_logic_vector(N-1 downto 0);
         c_in,a_inv,b_inv     : in std_logic;
         operator: in std_logic_vector(3 downto 0);
-        Over_flow,zero,set : out std_logic;
+        Over_flow,zero : out std_logic;
         result: out std_logic_vector(N-1 downto 0) );
 end top_level;
 
@@ -60,7 +60,7 @@ begin
         end generate;
     end generate;
 
-	 set = result_x(31);
+	 
     process(result_x)
         variable temp : std_logic;
     begin

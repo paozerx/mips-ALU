@@ -9,6 +9,6 @@ end overflow_dt;
 architecture data_flow of overflow_dt is
 begin
 
-	overflow <= ((a xor b) and (not(sum))) or (a and b);
+	overflow <= (a and b and (not sum)) or ((not a) and (not b) and sum);
 	
 end data_flow;
